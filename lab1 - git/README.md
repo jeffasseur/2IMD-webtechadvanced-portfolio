@@ -1,4 +1,4 @@
-# Lab 1 :rocket
+# Lab 1 🚀
 
 ## Part 1
 
