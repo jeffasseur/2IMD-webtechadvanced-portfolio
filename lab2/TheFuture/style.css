@@ -3,10 +3,10 @@
 }
 
 section {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1em;
     text-align: center;
     text-transform: uppercase;
     font-family: sans-serif;
@@ -36,4 +36,16 @@ section {
     background-color: yellow;
     grid-column: 4/ -1;
     grid-row: 2 / -1;
+}
+
+
+
+
+@media (min-width: 800px) {
+    section {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 1em;
+    }
 }
