@@ -1,8 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
 section {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cube {
+    display: flex;
+    align-items: center;
+    padding: .5em;
+}
+
+.cube h3 {
+    align-items: center;
 }
 
 .bg-red {
