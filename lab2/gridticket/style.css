@@ -112,6 +112,7 @@ footer div:last-child {
         border: 1px solid #000;
         display: flex;
         align-items: center;
+        padding: 0 3em;
     }
 
     .qrcode img {
@@ -127,6 +128,9 @@ footer div:last-child {
 
     footer div {
         font-size: 1.25em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     footer div:first-child {
@@ -143,6 +147,9 @@ footer div:last-child {
         grid-column: 1/5;
         border: 1px solid #000;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -152,11 +159,34 @@ footer div:last-child {
 @media (prefers-color-scheme: dark) {
     body {
         background: rgba(13, 13, 13, .8);
+        color: #FFF;
+    }
+
+    header {
+        color: #FFF;
     }
 
     footer div {
         background-color: #0D0D0D;
         color: #FFF;
+        border: 1px solid #FFF;
+    }
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 50em) {
+    header {
+        border: 1px solid #FFF;
+    }
+
+    .qrcode {
+        border: 1px solid #FFF;
+    }
+
+    footer div {
+        background: none;
+    }
+
+    .hide__mobile {
         border: 1px solid #FFF;
     }
 }
