@@ -3,11 +3,9 @@
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1em;
-    text-align: center;
     text-transform: uppercase;
     font-family: sans-serif;
 }
@@ -20,6 +18,7 @@ section {
 
 .cube h3 {
     align-items: center;
+    text-align: center;
 }
 
 .bg-red {
@@ -28,24 +27,57 @@ section {
 
 .bg-blue {
     background-color: aqua;
-    grid-column: 3 / 4;
-    grid-row: 1 / -1;
 }
 
 .bg-yellow {
     background-color: yellow;
-    grid-column: 4/ -1;
-    grid-row: 2 / -1;
 }
 
 
 
 
-@media (min-width: 800px) {
+@media (min-width: 600px) {
+    section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1em;
+    }
+
+    .bg-blue {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .bg-yellow {
+        grid-column: 2/3;
+        grid-row: 3/4;
+    }
+}
+
+
+
+
+@media (min-width: 1000px) {
     section {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(3, 1fr);
         grid-gap: 1em;
+    }
+
+    .bg-red {
+        background-color: red;
+    }
+
+    .bg-blue {
+        background-color: aqua;
+        grid-column: 3 / 4;
+        grid-row: 1 / -1;
+    }
+
+    .bg-yellow {
+        background-color: yellow;
+        grid-column: 4/ -1;
+        grid-row: 2 / -1;
     }
 }
