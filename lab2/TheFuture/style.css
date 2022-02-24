@@ -13,6 +13,7 @@ section {
 .cube {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: .5em;
 }
 
