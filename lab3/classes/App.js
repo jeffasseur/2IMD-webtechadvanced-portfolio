@@ -24,12 +24,15 @@ export default class App {
     createItem(e) {
         if(e.key === "Enter") {
             console.log("📕");
-            
-            let todo = new Todo("This is a demo");
+
+            let todoItem = document.querySelector("#add-item-text").value;
+            let todo = new Todo(todoItem);
             todo.add();
+
+            //console.log(todoItem);
         }
         this.reset();
-        console.log(this);
+        //console.log(this);
       // HINT🤩
       // this function should create a new todo by using the Todo() class
       // new Todo(text)
