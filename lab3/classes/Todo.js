@@ -1,6 +1,5 @@
 export default class Todo {
     constructor(title) {
-
         this.title = title;
       // HINT🤩
       // use a constructor to set basic property values

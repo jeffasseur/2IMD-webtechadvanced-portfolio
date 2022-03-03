@@ -26,12 +26,14 @@ export default class App {
             console.log("📕");
 
             let todoItem = document.querySelector("#add-item-text").value;
+            todoItem.split(":", 2);
+            console.log(todoItem.split(":", 2));
             let todo = new Todo(todoItem);
             todo.add();
 
             //console.log(todoItem);
+            this.reset();
         }
-        this.reset();
         //console.log(this);
       // HINT🤩
       // this function should create a new todo by using the Todo() class
