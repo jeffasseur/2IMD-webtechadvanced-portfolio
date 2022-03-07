@@ -27,7 +27,7 @@ export default class App {
 
             let todoItem = document.querySelector("#add-item-text").value;
             todoItem.split(":", 2);
-            console.log(todoItem.split(":", 2));
+            //console.log(todoItem.split(":", 2));
             let todo = new Todo(todoItem);
             todo.add();
 
