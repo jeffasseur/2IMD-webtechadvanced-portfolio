@@ -23,26 +23,35 @@ export default class App {
   
     createItem(e) {
         if(e.key === "Enter") {
-            console.log("📕");
+          console.log("📕");
 
-            let todoItem = document.querySelector("#add-item-text").value;
-            todoItem.split(":", 2);
-            //console.log(todoItem.split(":", 2));
-            let todo = new Todo(todoItem);
-            todo.add();
+          let todoItem = document.querySelector("#add-item-text").value;
+          let priority = todoItem.split(":", 2);
+            
+          let todo = new Todo(todoItem);
+          todo.add();
+            
+          // switch case for priority check
+          switch (priority[0]) {
+            case 'low': console.log("case low");
+            break;
 
-            //console.log(todoItem);
-            this.reset();
+            case 'medium': console.log("medium case");
+            break;
+
+            case 'high': console.log("🔥");
+            break;
+
+            default: console.log("Geen priority dus medium");
+          } 
+
+          // console.log(priority[0]);
+          this.reset();
         }
         //console.log(this);
       // HINT🤩
       // this function should create a new todo by using the Todo() class
-      // new Todo(text)
-      // todo.add();
       // todo.saveToStorage();
-      // if you used bind() in the previous function, you'll notice that this refers to the current class instance
-      // clear the text field with .reset() after adding the item
-      // if (e.key === "Enter")
     }
   
     loadFromStorage() {
