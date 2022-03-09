@@ -7,16 +7,30 @@ export default class Todo {
     }
   
     createElement() {
-        let li = document.createElement("li");
-        li.innerHTML = this.title;
-        li.classList.add("prior-high");
-        return li;
+      let input = this.title;
+      let priority = input.split(":", 2);
+
+      let li = document.createElement("li");
+      li.innerHTML = this.title;
+      // let todo = new Todo(todoItem);
+
+      // switch case for priority check
+      switch (priority[0]) {
+        case 'low': li.classList.add("prior-low");
+        break;
+
+        case 'medium': li.classList.add("prior-medium"); 
+        break;
+
+        case 'high': li.classList.add("prior-high"); 
+        break;
+
+        default: li.classList.add("prior-medium");
+      } 
+
+      return li;
       // HINT🤩
-      // this method will create the HTML structure with the correct classes, based on the todo priority
-      // let newNote = document.createElement("li");
-      // check if the todo item includes a priority like medium: to generate the correct classnames
       // don't forget to hook up an event listener for the click event
-      // return newNote;
     }
   
     markDone(e) {

@@ -23,29 +23,14 @@ export default class App {
   
     createItem(e) {
         if(e.key === "Enter") {
-          console.log("📕");
+          // console.log("📕");
 
           let todoItem = document.querySelector("#add-item-text").value;
-          let priority = todoItem.split(":", 2);
-            
+          // let priority = todoItem.split(":", 2);
           let todo = new Todo(todoItem);
+
           todo.add();
-            
-          // switch case for priority check
-          switch (priority[0]) {
-            case 'low': console.log("case low");
-            break;
 
-            case 'medium': console.log("medium case");
-            break;
-
-            case 'high': console.log("🔥");
-            break;
-
-            default: console.log("Geen priority dus medium");
-          } 
-
-          // console.log(priority[0]);
           this.reset();
         }
         //console.log(this);
