@@ -5,7 +5,6 @@ export default class App {
       console.log("🍕");
       // HINT🤩
       // set up the enter Key
-      document.querySelector("#add-item-text").addEventListener("keyup", this.createItem.bind(this));
       // this.setupEventListeners();
       this.setupEventListeners();
       // when the app loads, we can show previously saved items from localstorage
@@ -14,6 +13,7 @@ export default class App {
   
     setupEventListeners() {
       console.log("👂🏽");
+      document.querySelector("#add-item-text").addEventListener("keyup", this.createItem.bind(this));
       // HINT🤩
       // pressing the enter key in the text field triggers the createItem function
       // addEventListener("keyup", this.createItem.bind(this));
