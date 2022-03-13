@@ -8,7 +8,7 @@ export default class App {
       // this.setupEventListeners();
       this.setupEventListeners();
       // when the app loads, we can show previously saved items from localstorage
-      // this.loadFromStorage();
+      //this.loadFromStorage();
     }
   
     setupEventListeners() {
@@ -23,14 +23,12 @@ export default class App {
   
     createItem(e) {
         if(e.key === "Enter") {
-          // console.log("📕");
+          console.log("📕");
 
           let todoItem = document.querySelector("#add-item-text").value;
-          // let priority = todoItem.split(":", 2);
           let todo = new Todo(todoItem);
 
           todo.add();
-
           this.reset();
         }
         //console.log(this);
