@@ -45,7 +45,7 @@ export default class App {
   
     reset() {
       // this function should reset the form / clear the text field
-      document.querySelector("#add-item-text").value= " ";
+      document.querySelector("#add-item-text").value= "";
     }
   }
   

@@ -26,6 +26,8 @@ export default class Todo {
       else {
         li.classList.add("prior-medium");
         li.innerHTML = this.title;
+        console.log("skip if elses tot laatste");
+        console.log(this);
       }
       
       console.log(li);
