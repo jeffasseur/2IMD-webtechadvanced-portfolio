@@ -1,14 +1,14 @@
 export default class Todo {
     constructor(title) {
         this.title = title;
-        console.log(title);
+        // console.log(title);
       // HINT🤩
       // use a constructor to set basic property values
     }
   
     createElement() {
       let li = document.createElement("li");
-      console.log(this.title + " createItem");
+      // console.log(this.title + " createItem");
 
       if(this.title.startsWith("low:")) {
         console.log("priority low");
@@ -26,24 +26,28 @@ export default class Todo {
       else {
         li.classList.add("prior-medium");
         li.innerHTML = this.title;
-        console.log("skip if elses tot laatste");
-        console.log(this);
+        // console.log("skip if elses tot laatste");
+        // console.log(this);
       }
+      
+      // don't forget to hook up an event listener for the click event
+      li.prototype = this;
+      li.addEventListener("click", this.markDone);
       
       console.log(li);
       return li;
-      // HINT🤩
-      // don't forget to hook up an event listener for the click event
+      
     }
   
-    markDone(e) {
+    markDone() {
       // HINT🤩
       // this function should mark the current todo as done, by adding the correct CSS class
+      this.classList.add("done");
       // if the item is clicked, but was already marked as done, remove the item from the list
     }
   
     add() {
-      console.log(this.title + " add");
+      // console.log(this.title + " add");
       // HINT🤩
       // this function should append the note to the screen somehow
       // should return a full <li> with the right classes and innerHTML
