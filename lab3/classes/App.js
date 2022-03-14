@@ -7,6 +7,7 @@ export default class App {
       // set up the enter Key
       // this.setupEventListeners();
       this.setupEventListeners();
+      this.loadFromStorage();
       // when the app loads, we can show previously saved items from localstorage
       //this.loadFromStorage();
     }
@@ -41,6 +42,7 @@ export default class App {
       // HINT🤩
       // load all items from storage here and add them to the screen
       // use the Todo class to create the elements
+      
     }
   
     reset() {

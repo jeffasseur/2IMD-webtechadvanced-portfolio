@@ -30,11 +30,12 @@ export default class Todo {
         // console.log(this);
       }
       
+      
       // don't forget to hook up an event listener for the click event
       li.prototype = this;
+      li.prototype.saveToStorage();
       li.addEventListener("click", this.markDone);
-      
-      console.log(li);
+      // console.log(li);
       return li;
       
     }
@@ -44,10 +45,12 @@ export default class Todo {
       // if the item is clicked, but was already marked as done, remove the item from the list
       if(this.classList.contains("done")) {
         this.remove();
+        localStorage.removeItem();
       }
       else {
         // this function should mark the current todo as done, by adding the correct CSS class
         this.classList.add("done");
+        this.prototype.saveToStorage();
       }
     }
   
@@ -64,6 +67,10 @@ export default class Todo {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
+      let todoList = [];
+      todoList.push(this.title);
+      console.log(todoList);
+      localStorage.setItem("todo's", JSON.stringify(todoList));
     }
   }
   
