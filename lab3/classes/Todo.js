@@ -41,9 +41,14 @@ export default class Todo {
   
     markDone() {
       // HINT🤩
-      // this function should mark the current todo as done, by adding the correct CSS class
-      this.classList.add("done");
       // if the item is clicked, but was already marked as done, remove the item from the list
+      if(this.classList.contains("done")) {
+        this.remove();
+      }
+      else {
+        // this function should mark the current todo as done, by adding the correct CSS class
+        this.classList.add("done");
+      }
     }
   
     add() {
