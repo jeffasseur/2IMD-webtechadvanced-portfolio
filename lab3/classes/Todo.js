@@ -1,3 +1,5 @@
+let toDoList = JSON.parse(localStorage.getItem("todo's")) || [];
+
 export default class Todo {
     constructor(title) {
         this.title = title;
@@ -67,10 +69,9 @@ export default class Todo {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
-      let todoList = [];
-      todoList.push(this.title);
-      console.log(todoList);
-      localStorage.setItem("todo's", JSON.stringify(todoList));
+      localStorage.setItem("todo's0", "[]");
+      toDoList.push({"title": this.title});
+      localStorage.setItem("todo's", JSON.stringify(toDoList));
     }
   }
   
