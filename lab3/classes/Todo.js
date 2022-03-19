@@ -46,7 +46,7 @@ export default class Todo {
 
       if(this.className.includes("done")) {
         this.remove();
-        todos.foreach((element, index) => {
+        todos.forEach((element, index) => {
           if(element['title'] === this.innerHTML) {
             todos.splice(index, 1);
             localStorage.setItem('todos', JSON.stringify(todos));
@@ -58,7 +58,7 @@ export default class Todo {
       else {
         // this function should mark the current todo as done, by adding the correct CSS class
         this.classList.add("done");
-        todos.foreach((element, index) => {
+        todos.forEach((element, index) => {
           if(element['title'] === this.innerHTML) {
             let todo = todos[index];
             todo['status'] = "done";
