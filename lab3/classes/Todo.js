@@ -1,67 +1,84 @@
-let toDoList = JSON.parse(localStorage.getItem("todo's")) || [];
-
 export default class Todo {
-    constructor(title) {
+    constructor(title, priority, status) {
         this.title = title;
-        // console.log(title);
-      // HINT🤩
-      // use a constructor to set basic property values
+        this.priority = priority;
+        this.status = status;
     }
   
     createElement() {
       let li = document.createElement("li");
-      // console.log(this.title + " createItem");
 
       if(this.title.startsWith("low:")) {
-        console.log("priority low");
         li.classList.add("prior-low");
-        li.innerHTML = this.title.slice(4);
+        this.title = this.title.replace("low:", "");
+        this.priority = "low";
       }
       else if(this.title.startsWith("medium:")) {
         li.classList.add("prior-medium");
-        li.innerHTML = this.title.slice(7);
+        this.title = this.title.replace("medium:", "");
+        this.priority = "medium";
       }
       else if(this.title.startsWith("high:")) {
         li.classList.add("prior-high");
-        li.innerHTML = this.title.slice(5);
+        this.title = this.title.replace("high:", "");
+        this.priority = "high";
       }
       else {
         li.classList.add("prior-medium");
-        li.innerHTML = this.title;
+        this.title = this.title;
+        this.priority = "medium";
         // console.log("skip if elses tot laatste");
         // console.log(this);
       }
       
       
       // don't forget to hook up an event listener for the click event
-      li.prototype = this;
-      li.prototype.saveToStorage();
-      li.addEventListener("click", this.markDone);
-      // console.log(li);
+      li.innerHTML = this.title;
+      li.addEventListener("click", this.markDone.bind(li));
+      
       return li;
       
     }
   
-    markDone() {
-      // HINT🤩
-      // if the item is clicked, but was already marked as done, remove the item from the list
-      if(this.classList.contains("done")) {
+    markDone(e) {
+      let todos = localStorage.getItem('todos');
+      todos = JSON.parse(todos) || ("todos");
+
+      if(this.className.includes("done")) {
         this.remove();
-        localStorage.removeItem();
+        todos.foreach((element, index) => {
+          if(element['title'] === this.innerHTML) {
+            todos.splice(index, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+          }
+        });
+
+        // localStorage.removeItem();
       }
       else {
         // this function should mark the current todo as done, by adding the correct CSS class
         this.classList.add("done");
-        this.prototype.saveToStorage();
+        todos.foreach((element, index) => {
+          if(element['title'] === this.innerHTML) {
+            let todo = todos[index];
+            todo['status'] = "done";
+            localStorage.setItem("todos", JSON.stringify(todos));
+          }
+        })
       }
     }
   
-    add() {
+    add(status) {
       // console.log(this.title + " add");
       // HINT🤩
       // this function should append the note to the screen somehow
       // should return a full <li> with the right classes and innerHTML
       let todo = this.createElement(); 
+
+      if (status) {
+        todo.classList.add('done');
+      }
+
       document.querySelector("#todo-list").appendChild(todo);
     }
   
@@ -69,9 +86,13 @@ export default class Todo {
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
-      localStorage.setItem("todo's0", "[]");
-      toDoList.push({"title": this.title});
-      localStorage.setItem("todo's", JSON.stringify(toDoList));
+
+      let todos = localStorage.getItem("todos");
+      todos = JSON.parse(todos) || [];
+      todos.push({"title": this.title, "priority": this.priority, "status": this.status});
+      localStorage.setItem("todos", JSON.stringify(todos));
+
+      // console.log("Saved to Storage");
     }
   }
   

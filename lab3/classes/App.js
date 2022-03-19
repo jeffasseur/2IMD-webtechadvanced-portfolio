@@ -3,13 +3,9 @@ import Todo from './Todo.js';
 export default class App {
     constructor() {
       console.log("🍕");
-      // HINT🤩
-      // set up the enter Key
-      // this.setupEventListeners();
+
       this.setupEventListeners();
       this.loadFromStorage();
-      // when the app loads, we can show previously saved items from localstorage
-      //this.loadFromStorage();
     }
   
     setupEventListeners() {
@@ -30,6 +26,7 @@ export default class App {
           let todo = new Todo(todoItem);
 
           todo.add();
+          todo.saveToStorage();
           this.reset();
         }
         //console.log(this);
@@ -42,7 +39,18 @@ export default class App {
       // HINT🤩
       // load all items from storage here and add them to the screen
       // use the Todo class to create the elements
-      
+      let todos = JSON.parse(localStorage.getItem('todos'));
+      if(todos !== null) {
+        todos.forEach((title) => {
+          let todo = new Todo(`${title['priority']}:${title['title']}`);
+          if(title['status'] === "done") {
+            todo.add("done");
+          }
+          else {
+            todo.add();
+          }
+        })
+      }
     }
   
     reset() {
