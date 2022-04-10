@@ -39,7 +39,7 @@ export default class App {
         .then(json => {
             console.log(json);
             this.printWeather(json);
-            this.getMeal();
+            this.getMeal(json);
         })
         .catch(err => {
             console.log(err);
@@ -58,18 +58,47 @@ export default class App {
         document.querySelector(".weatherDescription").innerHTML = temp + "°C " + weatherSummary;
     }
 
-    getMeal() {
-        let urlMeal = `https://api.spoonacular.com/recipes/complexSearch?apiKey=d7c2b86f7bfd4fefa53f26110386f8f8&query=pasta`;
-        fetch(urlMeal).then( res => {
-            return res.json();
-        })
-        .then ( json => {
-            console.log( json );
-            this.printMeal( json );
-        })
-        .catch( err => {
-            console.log(err);
-        });
+    getMeal(json) {
+        let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=d7c2b86f7bfd4fefa53f26110386f8f8&query=";
+        if(json.main.temp <= 11 || json.weather[0].description.includes("cloud")) {
+            let urlMeal = baseUrl + "beef";
+            fetch(urlMeal).then( res => {
+                return res.json();
+            })
+            .then(json => {
+                console.log(json);
+                this.printMeal(json);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        if(json.main.temp >= 12 || json.weather[0].description.includes("clear")) {
+            let urlMeal = baseUrl + "pasta";
+            fetch(urlMeal).then( res => {
+                return res.json();
+            })
+            .then(json => {
+                console.log(json);
+                this.printMeal(json);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        if(json.main.temp >= 20 && json.weather[0].description.includes("clear")) {
+            let urlMeal = baseUrl + "icecream";
+            fetch(urlMeal).then( res => {
+                return res.json();
+            })
+            .then(json => {
+                console.log(json);
+                this.printMeal(json);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
     }
 
     printMeal( json ) {
